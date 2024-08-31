@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    Список всіх постів
+    {% for post in posts_list %}
+    <p>
+        {{post }}
+    </p>
+    {%endfor %}
+{% endblock %}

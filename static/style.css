@@ -1,0 +1,16 @@
+body {
+    background: #fffdfa;
+}
+
+.posts.list{
+    margin-left: 1%;
+    width: fit-content;
+}
+.date{
+    font-size: smaller;
+    color: rgb(98, 92, 92);
+}
+.categories_list{
+    margin-left: 5%;
+    width: 30%;
+}

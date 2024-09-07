@@ -2,9 +2,14 @@
 
 {% block content %}
     Список всіх постів
-    {% for post in posts_list %}
-    <p>
-        {{post }}
-    </p>
-    {%endfor %}
+    <div class="posts-lists">
+        <ul class="list-group">
+        {% for post in posts_list %}
+            <li class="list-group-item"> 
+                {{ post[2] }}
+                <span class="date"> {{ post[3] }} </span>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

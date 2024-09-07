@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 import db
 
 app = Flask(__name__)
@@ -13,8 +13,16 @@ def post_category():
                            categories_list=db.getCategories())
 
 
-@app.route('/post/category/<id>')
+@app.route('/post/category/<id>', methods =["GET", "POST"])
 def all_posts_in_category(id):
+
+    if request.method == "POST":
+        post_text = request.form.get("text")
+    
+        if len(post_text) > 0:
+            db.addPost(id, post_text)
+            return redirect(f'/post/category/{id}')
+
     return render_template("post_in_category.html",
                            posts_list=db.GetPostsInCategory(id),
                            category_name = db.GetCategoriesById(id)[0]

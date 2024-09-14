@@ -10,7 +10,8 @@ def index():
 @app.route('/post/category')
 def post_category():
     return render_template("post_category.html",
-                           categories_list=db.getCategories())
+                           categories_list=db.getCategories(),
+                           post_numbers = db.GetCategoriesByQuantity()[0])
 
 
 @app.route('/post/category/<id>', methods =["GET", "POST"])
@@ -35,6 +36,11 @@ def post_view():
 @app.route("/about")
 def about():
     return render_template('base.html')
+
+@app.route("/post/delete/<id>")
+def delete_post(id):
+    db.deletePost(id)
+    return redirect("/post/view")
 
 
 app.run(debug = True, host = '0.0.0.0')

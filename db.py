@@ -42,3 +42,14 @@ def addPost(category_id, text):
     cursor.execute('INSERT INTO post (category_id, text) VALUES (?,?)', [category_id,text])
     conn.commit()
     close()
+def GetCategoriesByQuantity():
+    open()
+    cursor.execute("SELECT count(*) FROM post group by category_id")
+    result = cursor.fetchall()
+    close()
+    return result
+def deletePost(id):
+    open()
+    cursor.execute("DELETE FROM post WHERE id ==?", [id])
+    conn.commit()
+    close()
